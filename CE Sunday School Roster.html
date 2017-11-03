@@ -61,7 +61,7 @@
               <td class="inner"></td>
               <td class="inner"></td>
               <td class="inner"></td>
-              <td class="inner">{{ person.tabs[2].authorized_pickup }}</td>
+              <td class="inner">{{ person.custom_tabs.childcare.authorized_pickup }}</td>
               <td class="inner">{{ person.medical_notes }}</td>
               <td class="last">{% increment row_number %}</td>
         		</tr>
@@ -81,7 +81,7 @@
                 {%if phone_number.location == "Mobile" %}{{ phone_number.number }}{% endif %}
               {% endfor %}
             </td>
-            <td class="inner">{{ person.tabs[2].authorized_pickup }}</td>
+            <td class="inner">{{ person.custom_tabs.childcare.authorized_pickup }}</td>
             <td class="inner">{{ person.medical_notes }}</td>
             <td class="last">{% increment row_number %}</td>
         </tr>
