@@ -18,14 +18,15 @@
       <h1>
         {{ list.name }}
       </h1>
+      <div>
+        {{ report.name }} 
+      </div>
 			<table>
         <thead>
         	<tr>
           	<th></th>
           	<th></th>
-            <th colspan="2">1st</th>
-            <th colspan="2">SS</th>
-          	<th colspan="2">2nd</th>
+            <th colspan="2">Sunday School</th>
           	<th></th>
           	<th></th>
           	<th></th>
@@ -35,10 +36,6 @@
         	<tr>
           	<th>Last Name</th>
           	<th>First Name</th>
-          	<th>IN</th>
-          	<th>OUT</th>
-          	<th>IN</th>
-          	<th>OUT</th>
           	<th>IN</th>
           	<th>OUT</th>
             <th>Parent Contact</th>
@@ -57,10 +54,6 @@
               <td class="inner"></td>
               <td class="inner"></td>
               <td class="inner"></td>
-              <td class="inner"></td>
-              <td class="inner"></td>
-              <td class="inner"></td>
-              <td class="inner"></td>
               <td class="inner">{{ person.custom_tabs.childcare.authorized_pickup }}</td>
               <td class="inner">{{ person.medical_notes }}</td>
               <td class="last">{% increment row_number %}</td>
@@ -70,10 +63,6 @@
 					<tr>
             <td class="name">{{person.last_name}}</td>
             <td class="name">{{person.first_name}}</td>
-            <td class="inner"></td>
-            <td class="inner"></td>
-            <td class="inner"></td>
-            <td class="inner"></td>
             <td class="inner"></td>
             <td class="inner"></td>
             <td class="inner">{{ primary_contact.name }}</td>
@@ -87,6 +76,40 @@
         </tr>
           {% endfor %}
         {% endfor %}
+        <!-- Adding some extra rows for guests. -->
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
       </table>
     </div>
   </body>
