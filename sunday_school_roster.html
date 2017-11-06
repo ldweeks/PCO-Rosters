@@ -20,6 +20,7 @@
       <h1>
         {{ list.name }}
       </h1>
+      <strong><em>*Please be sure to welcome our guests!</em></strong>
 			<table border="1" width="100%">
         <thead>
         	<tr>
@@ -33,33 +34,62 @@
 						<th dummy="{% increment row_number %}">#</th>
           </tr>
         </thead>
+        <!-- Our lists are sorted alphabetically by last name. -->
         {% assign people_sorted_by_last_name = people | sort_natural: 'last_name' %}
         {% for person in people_sorted_by_last_name %}
 				  <tr>
-            <td class="name"><strong>{{person.last_name}}</strong></td>
-            <td class="name"><strong>{{person.first_name}}</strong></td>
-            <td class="inner"></td>
-            <td class="inner"></td>
-            <td class="inner">
-              {% for household in person.households %}
-						    {% for adult in household.adults %}
-            	    <div class="top_row">
-            	      <div><strong>{{ adult.first_name }}: </strong>
-            	        {% for phone_number in adult.phone_numbers %}
-            	          {%if phone_number.location == "Mobile" %}
-            	            <div style="float:right;">
-            	              {{ phone_number.number }}
-            	            </div>
-            	          {% endif %}
-            	        {% endfor %}
-            	      </div>
-            	    </div>
-          	    {% endfor %}
-              {% endfor %}
-            </td>
-            <td class="inner">{{ person.custom_tabs.childcare.authorized_pickup }}</td>
-            <td class="inner">{{ person.medical_notes }}</td>
-            <td class="inner">{% increment row_number %}</td>
+					  <!-- We want our staff to recognize people who are guests -->
+					  {% if person.membership == "Local Guest" %}
+              <td class="name"><em><strong>* {{person.last_name}}</strong></em></td>
+              <td class="name"><em><strong>{{person.first_name}}</strong></em></td>
+              <td class="inner"></td>
+              <td class="inner"></td>
+              <td class="inner">
+                {% for household in person.households %}
+                  {% for adult in household.adults %}
+                    <div class="top_row">
+                      <div><em><strong>{{ adult.first_name }}: </strong></em>
+                        {% for phone_number in adult.phone_numbers %}
+                          {%if phone_number.location == "Mobile" %}
+                            <div style="float:right;">
+                              <em>{{ phone_number.number }}</em>
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% endfor %}
+              </td>
+              <td class="inner"><em>{{ person.custom_tabs.childcare.authorized_pickup }}</em></td>
+              <td class="inner"><em>{{ person.medical_notes }}</em></td>
+              <td class="last"><em>{% increment row_number %}<em></td>
+            {% else %}
+              <td class="name"><strong>{{person.last_name}}</strong></td>
+              <td class="name"><strong>{{person.first_name}}</strong></td>
+              <td class="inner"></td>
+              <td class="inner"></td>
+              <td class="inner">
+                {% for household in person.households %}
+                  {% for adult in household.adults %}
+                    <div class="top_row">
+                      <div><strong>{{ adult.first_name }}: </strong>
+                        {% for phone_number in adult.phone_numbers %}
+                          {%if phone_number.location == "Mobile" %}
+                            <div style="float:right;">
+                              {{ phone_number.number }}
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% endfor %}
+              </td>
+              <td class="inner">{{ person.custom_tabs.childcare.authorized_pickup }}</td>
+              <td class="inner">{{ person.medical_notes }}</td>
+              <td class="last">{% increment row_number %}</td>
+            {% endif %}
           </tr>
         {% endfor %}
         <!-- Adding some extra rows for guests. -->
