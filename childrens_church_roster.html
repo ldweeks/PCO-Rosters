@@ -5,8 +5,8 @@
     {{ helpers.bootstrap_3 }}
     <style>
           table { border-collapse: collapse; margin-top: 20px; }
-          table th { background-color: silver; font-weight: bold; text-align: left; padding: 1px; border:solid 1px #999; }
-          table tr td { border-bottom:solid 1px #999; padding: 1px; vertical-align: top; }
+          table th { background-color: silver; font-weight: bold; text-align: left; padding: 5px; border:solid 1px #999; }
+          table tr td { border-bottom:solid 1px #999; padding: 5px; vertical-align: top; }
           table tr td.person { background-color: #888; color: white }
           table tr td.name { background-color: #eee; border-right:solid 1px #999; border-left:solid 1px #999; }
           table tr td.inner { border-right:dotted 1px #bbb; }
@@ -17,10 +17,15 @@
   </head>
   <body>
     <div class="container">
-      <h1>
-        {{ list.name }}
-      </h1>
-      <strong><em>*Please be sure to welcome our guests!</em></strong>
+      <div class="header_info">
+      	<h1>
+        	{{ list.name }}
+      	</h1>
+      	<h3 style="float: right">
+        	Today's Date: _________________
+      	</h3>
+      	<strong><em>*Please be sure to welcome our guests!</em></strong>
+      </div>
 			<table border="1" width="100%">
         <thead>
         	<tr>
